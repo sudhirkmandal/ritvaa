@@ -8,12 +8,39 @@ import {
   User,
   ChevronDown,
 } from "lucide-react";
-import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const Navbar = ({ onNavigate }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState(null);
+  const navigate = useNavigate();
+
+  const routeMap = {
+    Home: "/",
+    Collections: "/collections",
+    Rings: "/rings",
+    Necklaces: "/necklaces",
+    Earrings: "/earrings",
+    Bridal: "/bridal",
+    Contact: "/contact",
+    "Diamond Rings": "/rings/diamond",
+    "Gold Rings": "/rings/gold",
+    "Engagement Rings": "/rings/engagement",
+    "Platinum Rings": "/rings/platinum",
+    "Gold Necklace": "/necklaces/gold",
+    "Diamond Necklace": "/necklaces/diamond",
+    "Choker Necklace": "/necklaces/choker",
+    "Bridal Necklace": "/necklaces/bridal",
+    "Stud Earrings": "/earrings/stud",
+    "Hoop Earrings": "/earrings/hoop",
+    "Drop Earrings": "/earrings/drop",
+    "Diamond Earrings": "/earrings/diamond",
+    "Bridal Sets": "/bridal/sets",
+    "Wedding Jewellery": "/bridal/wedding",
+    "Engagement Collection": "/bridal/engagement",
+    "Luxury Bridal": "/bridal/luxury",
+  };
 
   const menuData = {
     Collections: ["Rings", "Necklaces", "Earrings", "Bracelets", "Bridal Sets"],
@@ -28,6 +55,8 @@ const Navbar = ({ onNavigate }) => {
   const handleNav = (link) => {
     setMobileOpen(false);
     setOpenMobileMenu(null);
+    const path = routeMap[link] || `/${link.toLowerCase().replace(/\s+/g, "-")}`;
+    navigate(path);
     if (onNavigate) onNavigate(link);
   };
 
@@ -37,13 +66,6 @@ const Navbar = ({ onNavigate }) => {
         <div className="h-20 flex items-center justify-between">
 
           {/* ── Logo ── */}
-          {/* <h1
-            className="text-3xl font-serif font-bold tracking-[0.25em] text-red-600 cursor-pointer select-none"
-            onClick={() => handleNav("Home")}
-            title="Go to Home"
-          >
-            RITVAA
-          </h1> */}
           <Link to="/" onClick={() => handleNav("Home")}>
             <img
               src={logo}
@@ -121,7 +143,7 @@ const Navbar = ({ onNavigate }) => {
           <div className="hidden lg:flex items-center gap-5 text-white">
             <Search size={22} className="cursor-pointer hover:text-red-400 transition" />
             <Heart size={22} className="cursor-pointer hover:text-red-400 transition" />
-            <ShoppingBag size={22} className="cursor-pointer hover:text-red-400 transition" />
+            <Link to="/cart"><ShoppingBag size={22} className="cursor-pointer hover:text-red-400 transition" /></Link>
             <User size={22} className="cursor-pointer hover:text-red-400 transition" />
           </div>
 
@@ -186,7 +208,7 @@ const Navbar = ({ onNavigate }) => {
             <div className="flex gap-5 mt-5 pt-4 border-t border-white/10 text-white">
               <Search size={22} className="cursor-pointer hover:text-red-400 transition" />
               <Heart size={22} className="cursor-pointer hover:text-red-400 transition" />
-              <ShoppingBag size={22} className="cursor-pointer hover:text-red-400 transition" />
+              <Link to="/cart"><ShoppingBag size={22} className="cursor-pointer hover:text-red-400 transition" /></Link>
               <User size={22} className="cursor-pointer hover:text-red-400 transition" />
             </div>
           </div>

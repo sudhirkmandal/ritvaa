@@ -12,6 +12,9 @@ import Footer from "./components/Footer";
 
 import BestSellerPage from "./pages/BestsellerPage";
 import ProductDetailsPage from "./pages/Productdetailspage";
+import BuyNowPage from "./pages/Buynowpage";
+import CartPage from "./pages/Cartpage";
+import ContactPage from "./pages/Contactpage";
 
 // Home Page Component
 const Home = () => {
@@ -33,7 +36,10 @@ const Home = () => {
 const ROUTE_MAP = {
   Home: "/",
   "Best Sellers": "/bestseller",
-  "Product Details": "productdetails"
+  "Product Details": "productdetails",
+  "Buy Now": "buynow",
+  "Cart":"cart",
+  "Contact":"contact"
   // Collections: "/collections",
   // Rings: "/rings",
   // "Diamond Rings": "/rings/diamond",
@@ -65,6 +71,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/bestseller" element={<BestSellerPage />} />
         <Route path="/productdetails" element={<ProductDetailsPage />} />
+        <Route path="/buynow" element={<BuyNowPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
 
       <Footer />

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "../assets/logo.png"
 
 const footerLinks = {
   "Quick Links": [
@@ -135,12 +136,13 @@ export default function Footer() {
           <div className="lg:col-span-2">
             {/* Logo */}
             <div className="mb-5">
-              <h2
+              {/* <h2
                 className="text-3xl font-bold tracking-widest"
                 style={{ color: "#c9a96e", fontFamily: "Georgia, serif", letterSpacing: "0.25em" }}
               >
                 RITVAA
-              </h2>
+              </h2> */}
+              <img src={logo} className="h-13" alt="" />
               <div className="mt-1" style={{ width: "40px", height: "1px", backgroundColor: "#c9a96e" }} />
             </div>
 
