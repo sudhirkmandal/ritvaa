@@ -1,68 +1,69 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // ── DATA ────────────────────────────────────────────────────────────────────
 
 const rings = [
-  { id: 1,  name: "The R Alphabet Diamond Ring",   price: 40683, old: 46202, discount: true,  img: "https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 2,  name: "The Ximena Diamond Ring",        price: 11605, old: 13199, discount: false, img: "https://images.pexels.com/photos/10983783/pexels-photo-10983783.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 3,  name: "The Kennet Diamond Ring",        price: 40489, old: 46700, discount: true,  img: "https://images.pexels.com/photos/9428038/pexels-photo-9428038.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 4,  name: "The Akira Diamond Ring",         price: 25998, old: 29076, discount: true,  img: "https://images.pexels.com/photos/3182826/pexels-photo-3182826.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 41, name: "The Celeste Solitaire Ring",     price: 32500, old: 38000, discount: true,  img: "https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 42, name: "The Aria Gold Ring",             price: 18200, old: 21000, discount: true,  img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 43, name: "The Prism Diamond Ring",         price: 55900, old: 63000, discount: true,  img: "https://images.pexels.com/photos/1458860/pexels-photo-1458860.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 44, name: "The Lotus Eternity Ring",        price: 29400, old: 34500, discount: true,  img: "https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 1, name: "The R Alphabet Diamond Ring", price: 40683, old: 46202, discount: true, img: "https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 2, name: "The Ximena Diamond Ring", price: 11605, old: 13199, discount: false, img: "https://images.pexels.com/photos/10983783/pexels-photo-10983783.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 3, name: "The Kennet Diamond Ring", price: 40489, old: 46700, discount: true, img: "https://images.pexels.com/photos/9428038/pexels-photo-9428038.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 4, name: "The Akira Diamond Ring", price: 25998, old: 29076, discount: true, img: "https://images.pexels.com/photos/3182826/pexels-photo-3182826.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 41, name: "The Celeste Solitaire Ring", price: 32500, old: 38000, discount: true, img: "https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 42, name: "The Aria Gold Ring", price: 18200, old: 21000, discount: true, img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 43, name: "The Prism Diamond Ring", price: 55900, old: 63000, discount: true, img: "https://images.pexels.com/photos/1458860/pexels-photo-1458860.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 44, name: "The Lotus Eternity Ring", price: 29400, old: 34500, discount: true, img: "https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=400" },
 ];
 
 const mangalsutra = [
-  { id: 5,  name: "The Priya Gold Mangalsutra",     price: 22450, old: 26000, discount: true,  img: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 6,  name: "The Divya Diamond Mangalsutra",  price: 35800, old: 41200, discount: true,  img: "https://images.pexels.com/photos/1616096/pexels-photo-1616096.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 7,  name: "The Ananya Gold Mangalsutra",    price: 18990, old: 22000, discount: true,  img: "https://images.pexels.com/photos/1302307/pexels-photo-1302307.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 8,  name: "The Kavya Diamond Mangalsutra",  price: 48500, old: 55000, discount: true,  img: "https://images.pexels.com/photos/1246960/pexels-photo-1246960.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 51, name: "The Shruti Classic Mangalsutra", price: 15600, old: 18500, discount: true,  img: "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 52, name: "The Mehal Gold Mangalsutra",     price: 28900, old: 33000, discount: true,  img: "https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 53, name: "The Rudra Diamond Mangalsutra",  price: 62000, old: 72000, discount: true,  img: "https://images.pexels.com/photos/1927260/pexels-photo-1927260.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 54, name: "The Veda Pearl Mangalsutra",     price: 11200, old: 13500, discount: true,  img: "https://images.pexels.com/photos/1458846/pexels-photo-1458846.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 5, name: "The Priya Gold Mangalsutra", price: 22450, old: 26000, discount: true, img: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 6, name: "The Divya Diamond Mangalsutra", price: 35800, old: 41200, discount: true, img: "https://images.pexels.com/photos/1616096/pexels-photo-1616096.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 7, name: "The Ananya Gold Mangalsutra", price: 18990, old: 22000, discount: true, img: "https://images.pexels.com/photos/1302307/pexels-photo-1302307.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 8, name: "The Kavya Diamond Mangalsutra", price: 48500, old: 55000, discount: true, img: "https://images.pexels.com/photos/1246960/pexels-photo-1246960.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 51, name: "The Shruti Classic Mangalsutra", price: 15600, old: 18500, discount: true, img: "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 52, name: "The Mehal Gold Mangalsutra", price: 28900, old: 33000, discount: true, img: "https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 53, name: "The Rudra Diamond Mangalsutra", price: 62000, old: 72000, discount: true, img: "https://images.pexels.com/photos/1927260/pexels-photo-1927260.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 54, name: "The Veda Pearl Mangalsutra", price: 11200, old: 13500, discount: true, img: "https://images.pexels.com/photos/1458846/pexels-photo-1458846.jpeg?auto=compress&cs=tinysrgb&w=400" },
 ];
 
 const earrings = [
-  { id: 9,  name: "The Meera Diamond Earring",      price: 15200, old: 18000, discount: true,  img: "https://images.pexels.com/photos/10657896/pexels-photo-10657896.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 10, name: "The Aisha Gold Earring",          price: 9800,  old: 11500, discount: true,  img: "https://images.pexels.com/photos/5442468/pexels-photo-5442468.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 11, name: "The Tara Diamond Drops",          price: 21600, old: 25000, discount: true,  img: "https://images.pexels.com/photos/11379957/pexels-photo-11379957.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 12, name: "The Luna Stud Earring",           price: 7450,  old: 8900,  discount: true,  img: "https://images.pexels.com/photos/10657890/pexels-photo-10657890.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 61, name: "The Zara Jhumka Earring",         price: 12400, old: 14800, discount: true,  img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 62, name: "The Ishaan Gold Chandbali",       price: 18900, old: 22500, discount: true,  img: "https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 63, name: "The Diya Pearl Drop Earring",     price: 8600,  old: 10200, discount: true,  img: "https://images.pexels.com/photos/1458860/pexels-photo-1458860.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 64, name: "The Vanya Hoop Earring",          price: 14300, old: 17000, discount: true,  img: "https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 9, name: "The Meera Diamond Earring", price: 15200, old: 18000, discount: true, img: "https://images.pexels.com/photos/10657896/pexels-photo-10657896.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 10, name: "The Aisha Gold Earring", price: 9800, old: 11500, discount: true, img: "https://images.pexels.com/photos/5442468/pexels-photo-5442468.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 11, name: "The Tara Diamond Drops", price: 21600, old: 25000, discount: true, img: "https://images.pexels.com/photos/11379957/pexels-photo-11379957.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 12, name: "The Luna Stud Earring", price: 7450, old: 8900, discount: true, img: "https://images.pexels.com/photos/10657890/pexels-photo-10657890.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 61, name: "The Zara Jhumka Earring", price: 12400, old: 14800, discount: true, img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 62, name: "The Ishaan Gold Chandbali", price: 18900, old: 22500, discount: true, img: "https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 63, name: "The Diya Pearl Drop Earring", price: 8600, old: 10200, discount: true, img: "https://images.pexels.com/photos/1458860/pexels-photo-1458860.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 64, name: "The Vanya Hoop Earring", price: 14300, old: 17000, discount: true, img: "https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=400" },
 ];
 
 const chains = [
-  { id: 13, name: "The Heritage Gold Chain",         price: 32100, old: 37500, discount: true,  img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 14, name: "The Milano Diamond Chain",        price: 55000, old: 63000, discount: true,  img: "https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 15, name: "The Classic Gold Chain",          price: 18750, old: 22000, discount: true,  img: "https://images.pexels.com/photos/1458860/pexels-photo-1458860.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 16, name: "The Venezia Link Chain",          price: 42300, old: 49000, discount: true,  img: "https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 71, name: "The Regal Rope Gold Chain",       price: 27800, old: 32500, discount: true,  img: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 72, name: "The Infinity Diamond Chain",      price: 61000, old: 70000, discount: true,  img: "https://images.pexels.com/photos/1616096/pexels-photo-1616096.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 73, name: "The Flat Curb Gold Chain",        price: 15500, old: 18000, discount: true,  img: "https://images.pexels.com/photos/1302307/pexels-photo-1302307.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 74, name: "The Box Link Chain",              price: 22100, old: 26500, discount: true,  img: "https://images.pexels.com/photos/1246960/pexels-photo-1246960.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 13, name: "The Heritage Gold Chain", price: 32100, old: 37500, discount: true, img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 14, name: "The Milano Diamond Chain", price: 55000, old: 63000, discount: true, img: "https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 15, name: "The Classic Gold Chain", price: 18750, old: 22000, discount: true, img: "https://images.pexels.com/photos/1458860/pexels-photo-1458860.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 16, name: "The Venezia Link Chain", price: 42300, old: 49000, discount: true, img: "https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 71, name: "The Regal Rope Gold Chain", price: 27800, old: 32500, discount: true, img: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 72, name: "The Infinity Diamond Chain", price: 61000, old: 70000, discount: true, img: "https://images.pexels.com/photos/1616096/pexels-photo-1616096.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 73, name: "The Flat Curb Gold Chain", price: 15500, old: 18000, discount: true, img: "https://images.pexels.com/photos/1302307/pexels-photo-1302307.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 74, name: "The Box Link Chain", price: 22100, old: 26500, discount: true, img: "https://images.pexels.com/photos/1246960/pexels-photo-1246960.jpeg?auto=compress&cs=tinysrgb&w=400" },
 ];
 
 const bracelets = [
-  { id: 17, name: "The Selene Diamond Bracelet",     price: 28900, old: 33500, discount: true,  img: "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 18, name: "The Aurora Gold Bracelet",        price: 19600, old: 23000, discount: true,  img: "https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 19, name: "The Nova Diamond Bracelet",       price: 37200, old: 43000, discount: true,  img: "https://images.pexels.com/photos/1927260/pexels-photo-1927260.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 20, name: "The Elara Charm Bracelet",        price: 14500, old: 17200, discount: true,  img: "https://images.pexels.com/photos/1458846/pexels-photo-1458846.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 81, name: "The Estelle Tennis Bracelet",     price: 45600, old: 52000, discount: true,  img: "https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 82, name: "The Bliss Gold Bangle Bracelet",  price: 16800, old: 19500, discount: true,  img: "https://images.pexels.com/photos/10983783/pexels-photo-10983783.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 83, name: "The Celeste Kada Bracelet",       price: 31200, old: 36000, discount: true,  img: "https://images.pexels.com/photos/9428038/pexels-photo-9428038.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 84, name: "The Bloom Diamond Bracelet",      price: 52000, old: 60000, discount: true,  img: "https://images.pexels.com/photos/3182826/pexels-photo-3182826.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 17, name: "The Selene Diamond Bracelet", price: 28900, old: 33500, discount: true, img: "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 18, name: "The Aurora Gold Bracelet", price: 19600, old: 23000, discount: true, img: "https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 19, name: "The Nova Diamond Bracelet", price: 37200, old: 43000, discount: true, img: "https://images.pexels.com/photos/1927260/pexels-photo-1927260.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 20, name: "The Elara Charm Bracelet", price: 14500, old: 17200, discount: true, img: "https://images.pexels.com/photos/1458846/pexels-photo-1458846.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 81, name: "The Estelle Tennis Bracelet", price: 45600, old: 52000, discount: true, img: "https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 82, name: "The Bliss Gold Bangle Bracelet", price: 16800, old: 19500, discount: true, img: "https://images.pexels.com/photos/10983783/pexels-photo-10983783.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 83, name: "The Celeste Kada Bracelet", price: 31200, old: 36000, discount: true, img: "https://images.pexels.com/photos/9428038/pexels-photo-9428038.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 84, name: "The Bloom Diamond Bracelet", price: 52000, old: 60000, discount: true, img: "https://images.pexels.com/photos/3182826/pexels-photo-3182826.jpeg?auto=compress&cs=tinysrgb&w=400" },
 ];
 
 const categories = [
-  { key: "rings",       label: "RINGS",       data: rings },
+  { key: "rings", label: "RINGS", data: rings },
   { key: "mangalsutra", label: "MANGALSUTRA", data: mangalsutra },
-  { key: "earring",     label: "EARRING",     data: earrings },
-  { key: "chain",       label: "CHAIN",       data: chains },
-  { key: "bracelets",   label: "BRACELETS",   data: bracelets },
+  { key: "earring", label: "EARRING", data: earrings },
+  { key: "chain", label: "CHAIN", data: chains },
+  { key: "bracelets", label: "BRACELETS", data: bracelets },
 ];
 
 const VISIBLE_COUNT = 4;
@@ -153,8 +154,8 @@ function ProductCard({ item, liked, onToggleLike }) {
 
 export default function BestSellers() {
   const [activeCategory, setActiveCategory] = useState("rings");
-  const [showAll, setShowAll]               = useState(false);
-  const [liked, setLiked]                   = useState(new Set());
+  const [showAll, setShowAll] = useState(false);
+  const [liked, setLiked] = useState(new Set());
 
   const toggleLike = (id) => {
     setLiked((prev) => {
@@ -169,7 +170,7 @@ export default function BestSellers() {
     setShowAll(false);
   };
 
-  const allData     = categories.find((c) => c.key === activeCategory)?.data || [];
+  const allData = categories.find((c) => c.key === activeCategory)?.data || [];
   const visibleData = showAll ? allData : allData.slice(0, VISIBLE_COUNT);
   const hiddenCount = allData.length - VISIBLE_COUNT;
 
@@ -209,16 +210,17 @@ export default function BestSellers() {
         </div>
 
         {/* ── Products Grid ── */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
-          {visibleData.map((item) => (
-            <ProductCard
-              key={item.id}
-              item={item}
-              liked={liked.has(item.id)}
-              onToggleLike={toggleLike}
-            />
-          ))}
-        </div>
+        <Link to="/bestseller" onClick={() => window.scrollTo(0, 0)}>
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
+            {visibleData.map((item) => (
+              <ProductCard
+                key={item.id}
+                item={item}
+                liked={liked.has(item.id)}
+                onToggleLike={toggleLike}
+              />
+            ))}
+          </div></Link>
 
         {/* ── View All / Show Less ── */}
         <div className="flex flex-col items-center mt-10 gap-2">
