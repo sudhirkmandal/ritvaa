@@ -11,6 +11,7 @@ import BannerPage from "./components/BannerPage";
 import Footer from "./components/Footer";
 
 import BestSellerPage from "./pages/BestsellerPage";
+import ProductDetailsPage from "./pages/Productdetailspage";
 
 // Home Page Component
 const Home = () => {
@@ -32,6 +33,7 @@ const Home = () => {
 const ROUTE_MAP = {
   Home: "/",
   "Best Sellers": "/bestseller",
+  "Product Details": "productdetails"
   // Collections: "/collections",
   // Rings: "/rings",
   // "Diamond Rings": "/rings/diamond",
@@ -62,6 +64,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/bestseller" element={<BestSellerPage />} />
+        <Route path="/productdetails" element={<ProductDetailsPage />} />
       </Routes>
 
       <Footer />

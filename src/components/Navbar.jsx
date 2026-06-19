@@ -8,6 +8,8 @@ import {
   User,
   ChevronDown,
 } from "lucide-react";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png"
 
 const Navbar = ({ onNavigate }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,13 +37,20 @@ const Navbar = ({ onNavigate }) => {
         <div className="h-20 flex items-center justify-between">
 
           {/* ── Logo ── */}
-          <h1
+          {/* <h1
             className="text-3xl font-serif font-bold tracking-[0.25em] text-red-600 cursor-pointer select-none"
             onClick={() => handleNav("Home")}
             title="Go to Home"
           >
             RITVAA
-          </h1>
+          </h1> */}
+          <Link to="/" onClick={() => handleNav("Home")}>
+            <img
+              src={logo}
+              alt="RITVAA"
+              className="h-13 w-auto object-contain cursor-pointer"
+            />
+          </Link>
 
           {/* ── Desktop Menu ── */}
           <ul className="hidden lg:flex items-center gap-8">

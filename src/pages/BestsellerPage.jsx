@@ -1,39 +1,40 @@
+import { Link } from "react-router-dom";
 import { useState, useMemo } from "react";
 
 // ── DATA ─────────────────────────────────────────────────────────────────────
 const products = [
-  { id: 1,  name: "Crystal Love Bangle Bracelet",       price: 2659, old: 4298, discount: 38, rating: 4.5, reviews: 1431, badge: "Buy 1 Get 1", category: "Bracelets", img: "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 2,  name: "Athena Solitaire Hoop Earrings",     price: 2258, old: 3642, discount: 38, rating: 4.5, reviews: 1212, badge: "Buy 1 Get 1", category: "Earrings",  img: "https://images.pexels.com/photos/10657896/pexels-photo-10657896.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 3,  name: "Diamond Affair Bracelet",            price: 2533, old: 4086, discount: 38, rating: 4.5, reviews: 675,  badge: "Buy 1 Get 1", category: "Bracelets", img: "https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 4,  name: "Round Solitaire Necklace",           price: 2799, old: 4514, discount: 38, rating: 4,   reviews: 984,  badge: "Buy 1 Get 1", category: "Necklaces", img: "https://images.pexels.com/photos/1302307/pexels-photo-1302307.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 5,  name: "Classic Emerald Necklace",           price: 2223, old: 3585, discount: 38, rating: 5,   reviews: 865,  badge: "Buy 1 Get 1", category: "Necklaces", img: "https://images.pexels.com/photos/1246960/pexels-photo-1246960.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 6,  name: "Diamond Huggie Hoop Earrings",       price: 2346, old: 3784, discount: 38, rating: 4.5, reviews: 747,  badge: "Buy 1 Get 1", category: "Earrings",  img: "https://images.pexels.com/photos/5442468/pexels-photo-5442468.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 7,  name: "Nail Bangle Bracelet",               price: 2258, old: 3642, discount: 38, rating: 4.5, reviews: 712,  badge: "Buy 1 Get 1", category: "Bracelets", img: "https://images.pexels.com/photos/1927260/pexels-photo-1927260.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 8,  name: "Delicate Diamond Studded Necklace",  price: 2113, old: 3408, discount: 38, rating: 4.5, reviews: 586,  badge: "Buy 1 Get 1", category: "Necklaces", img: "https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 9,  name: "Multi Stone Q Clasp Bracelet",       price: 2258, old: 3642, discount: 38, rating: 4,   reviews: 459,  badge: "Buy 1 Get 1", category: "Bracelets", img: "https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 10, name: "Rope Chain | 6 MM",                  price: 2633, old: 4247, discount: 38, rating: 4.5, reviews: 377,  badge: "Buy 1 Get 1", category: "Chains",    img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 11, name: "Tree of Life Necklace",              price: 2508, old: 4045, discount: 38, rating: 4.5, reviews: 556,  badge: "Buy 1 Get 1", category: "Necklaces", img: "https://images.pexels.com/photos/1458860/pexels-photo-1458860.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 12, name: "Golden Orb Set",                     price: 2265, old: 3653, discount: 38, rating: 4,   reviews: 518,  badge: "Buy 1 Get 1", category: "Rings",     img: "https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 13, name: "Pearl Drop Pendant Necklace",        price: 1899, old: 3064, discount: 38, rating: 4.5, reviews: 293,  badge: "Buy 1 Get 1", category: "Necklaces", img: "https://images.pexels.com/photos/11379957/pexels-photo-11379957.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 14, name: "Twisted Infinity Ring",              price: 1749, old: 2820, discount: 38, rating: 4,   reviews: 412,  badge: "Buy 1 Get 1", category: "Rings",     img: "https://images.pexels.com/photos/10983783/pexels-photo-10983783.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 15, name: "Celestial Star Chain Bracelet",      price: 2099, old: 3385, discount: 38, rating: 5,   reviews: 621,  badge: "Buy 1 Get 1", category: "Bracelets", img: "https://images.pexels.com/photos/1458846/pexels-photo-1458846.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { id: 16, name: "Floral Gold Stud Earrings",          price: 1599, old: 2580, discount: 38, rating: 4.5, reviews: 339,  badge: "Buy 1 Get 1", category: "Earrings",  img: "https://images.pexels.com/photos/10657890/pexels-photo-10657890.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 1, name: "Crystal Love Bangle Bracelet", price: 2659, old: 4298, discount: 38, rating: 4.5, reviews: 1431, badge: "Buy 1 Get 1", category: "Bracelets", img: "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 2, name: "Athena Solitaire Hoop Earrings", price: 2258, old: 3642, discount: 38, rating: 4.5, reviews: 1212, badge: "Buy 1 Get 1", category: "Earrings", img: "https://images.pexels.com/photos/10657896/pexels-photo-10657896.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 3, name: "Diamond Affair Bracelet", price: 2533, old: 4086, discount: 38, rating: 4.5, reviews: 675, badge: "Buy 1 Get 1", category: "Bracelets", img: "https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 4, name: "Round Solitaire Necklace", price: 2799, old: 4514, discount: 38, rating: 4, reviews: 984, badge: "Buy 1 Get 1", category: "Necklaces", img: "https://images.pexels.com/photos/1302307/pexels-photo-1302307.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 5, name: "Classic Emerald Necklace", price: 2223, old: 3585, discount: 38, rating: 5, reviews: 865, badge: "Buy 1 Get 1", category: "Necklaces", img: "https://images.pexels.com/photos/1246960/pexels-photo-1246960.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 6, name: "Diamond Huggie Hoop Earrings", price: 2346, old: 3784, discount: 38, rating: 4.5, reviews: 747, badge: "Buy 1 Get 1", category: "Earrings", img: "https://images.pexels.com/photos/5442468/pexels-photo-5442468.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 7, name: "Nail Bangle Bracelet", price: 2258, old: 3642, discount: 38, rating: 4.5, reviews: 712, badge: "Buy 1 Get 1", category: "Bracelets", img: "https://images.pexels.com/photos/1927260/pexels-photo-1927260.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 8, name: "Delicate Diamond Studded Necklace", price: 2113, old: 3408, discount: 38, rating: 4.5, reviews: 586, badge: "Buy 1 Get 1", category: "Necklaces", img: "https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 9, name: "Multi Stone Q Clasp Bracelet", price: 2258, old: 3642, discount: 38, rating: 4, reviews: 459, badge: "Buy 1 Get 1", category: "Bracelets", img: "https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 10, name: "Rope Chain | 6 MM", price: 2633, old: 4247, discount: 38, rating: 4.5, reviews: 377, badge: "Buy 1 Get 1", category: "Chains", img: "https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 11, name: "Tree of Life Necklace", price: 2508, old: 4045, discount: 38, rating: 4.5, reviews: 556, badge: "Buy 1 Get 1", category: "Necklaces", img: "https://images.pexels.com/photos/1458860/pexels-photo-1458860.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 12, name: "Golden Orb Set", price: 2265, old: 3653, discount: 38, rating: 4, reviews: 518, badge: "Buy 1 Get 1", category: "Rings", img: "https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 13, name: "Pearl Drop Pendant Necklace", price: 1899, old: 3064, discount: 38, rating: 4.5, reviews: 293, badge: "Buy 1 Get 1", category: "Necklaces", img: "https://images.pexels.com/photos/11379957/pexels-photo-11379957.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 14, name: "Twisted Infinity Ring", price: 1749, old: 2820, discount: 38, rating: 4, reviews: 412, badge: "Buy 1 Get 1", category: "Rings", img: "https://images.pexels.com/photos/10983783/pexels-photo-10983783.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 15, name: "Celestial Star Chain Bracelet", price: 2099, old: 3385, discount: 38, rating: 5, reviews: 621, badge: "Buy 1 Get 1", category: "Bracelets", img: "https://images.pexels.com/photos/1458846/pexels-photo-1458846.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { id: 16, name: "Floral Gold Stud Earrings", price: 1599, old: 2580, discount: 38, rating: 4.5, reviews: 339, badge: "Buy 1 Get 1", category: "Earrings", img: "https://images.pexels.com/photos/10657890/pexels-photo-10657890.jpeg?auto=compress&cs=tinysrgb&w=400" },
 ];
 
 const ALL_CATEGORIES = ["Bracelets", "Earrings", "Necklaces", "Rings", "Chains"];
 const PRICE_RANGES = [
-  { label: "Under ₹2,000",       min: 0,    max: 2000  },
-  { label: "₹2,000 – ₹2,500",   min: 2000, max: 2500  },
-  { label: "₹2,500 – ₹3,000",   min: 2500, max: 3000  },
-  { label: "Above ₹3,000",       min: 3000, max: Infinity },
+  { label: "Under ₹2,000", min: 0, max: 2000 },
+  { label: "₹2,000 – ₹2,500", min: 2000, max: 2500 },
+  { label: "₹2,500 – ₹3,000", min: 2500, max: 3000 },
+  { label: "Above ₹3,000", min: 3000, max: Infinity },
 ];
 const RATINGS = [5, 4, 3];
 const SORT_OPTIONS = [
-  { value: "default",    label: "Default" },
-  { value: "price_asc",  label: "Price: Low to High" },
+  { value: "default", label: "Default" },
+  { value: "price_asc", label: "Price: Low to High" },
   { value: "price_desc", label: "Price: High to Low" },
-  { value: "rating",     label: "Top Rated" },
-  { value: "popular",    label: "Most Popular" },
+  { value: "rating", label: "Top Rated" },
+  { value: "popular", label: "Most Popular" },
 ];
 
 const fmt = (n) => "₹ " + n.toLocaleString("en-IN") + ".00";
@@ -42,15 +43,15 @@ const fmt = (n) => "₹ " + n.toLocaleString("en-IN") + ".00";
 function StarRating({ rating, size = 13 }) {
   return (
     <div className="flex items-center gap-0.5">
-      {[1,2,3,4,5].map((s) => {
+      {[1, 2, 3, 4, 5].map((s) => {
         const filled = rating >= s;
-        const half   = !filled && rating >= s - 0.5;
+        const half = !filled && rating >= s - 0.5;
         return (
           <svg key={s} viewBox="0 0 20 20" style={{ width: size, height: size, flexShrink: 0 }}>
             <defs>
               <linearGradient id={`hg${s}${size}`}>
-                <stop offset="50%" stopColor="#e6a817"/>
-                <stop offset="50%" stopColor="#d4c5a9"/>
+                <stop offset="50%" stopColor="#e6a817" />
+                <stop offset="50%" stopColor="#d4c5a9" />
               </linearGradient>
             </defs>
             <polygon
@@ -80,7 +81,7 @@ function FilterSection({ title, children, defaultOpen = true }) {
           strokeWidth={2} stroke="#8b1a1a"
           style={{ width: 16, height: 16, transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
         </svg>
       </button>
       {open && <div className="pb-4">{children}</div>}
@@ -151,8 +152,8 @@ function ProductCard({ product }) {
             letterSpacing: "0.08em",
             cursor: "pointer",
           }}
-          onMouseEnter={e => { if (!inCart) { e.currentTarget.style.backgroundColor = "#1a0a05"; e.currentTarget.style.color = "#fff"; e.currentTarget.style.borderColor = "#1a0a05"; }}}
-          onMouseLeave={e => { if (!inCart) { e.currentTarget.style.backgroundColor = "#fff"; e.currentTarget.style.color = "#1a1a1a"; e.currentTarget.style.borderColor = "#c8bfb0"; }}}
+          onMouseEnter={e => { if (!inCart) { e.currentTarget.style.backgroundColor = "#1a0a05"; e.currentTarget.style.color = "#fff"; e.currentTarget.style.borderColor = "#1a0a05"; } }}
+          onMouseLeave={e => { if (!inCart) { e.currentTarget.style.backgroundColor = "#fff"; e.currentTarget.style.color = "#1a1a1a"; e.currentTarget.style.borderColor = "#c8bfb0"; } }}
         >
           {inCart ? "✓ Added to Cart" : "Add to Cart"}
         </button>
@@ -211,7 +212,7 @@ function Sidebar({ filters, onChange, onClear, totalResults }) {
                 >
                   {categories.includes(cat) && (
                     <svg viewBox="0 0 12 12" style={{ width: 10, height: 10 }}>
-                      <path d="M2 6l3 3 5-5" stroke="#fff" strokeWidth={1.8} fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M2 6l3 3 5-5" stroke="#fff" strokeWidth={1.8} fill="none" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   )}
                 </div>
@@ -276,7 +277,7 @@ function Sidebar({ filters, onChange, onClear, totalResults }) {
                 >
                   {minRating === r && (
                     <svg viewBox="0 0 12 12" style={{ width: 10, height: 10 }}>
-                      <path d="M2 6l3 3 5-5" stroke="#fff" strokeWidth={1.8} fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M2 6l3 3 5-5" stroke="#fff" strokeWidth={1.8} fill="none" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   )}
                 </div>
@@ -308,7 +309,7 @@ function Sidebar({ filters, onChange, onClear, totalResults }) {
                 >
                   {filters.minDiscount === d && (
                     <svg viewBox="0 0 12 12" style={{ width: 10, height: 10 }}>
-                      <path d="M2 6l3 3 5-5" stroke="#fff" strokeWidth={1.8} fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M2 6l3 3 5-5" stroke="#fff" strokeWidth={1.8} fill="none" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   )}
                 </div>
@@ -384,10 +385,10 @@ export default function BestSellerPage() {
     }
     if (filters.minRating !== null) list = list.filter(p => p.rating >= filters.minRating);
     if (filters.minDiscount !== null) list = list.filter(p => p.discount >= filters.minDiscount);
-    if (sortBy === "price_asc")  list.sort((a,b) => a.price - b.price);
-    if (sortBy === "price_desc") list.sort((a,b) => b.price - a.price);
-    if (sortBy === "rating")     list.sort((a,b) => b.rating - a.rating);
-    if (sortBy === "popular")    list.sort((a,b) => b.reviews - a.reviews);
+    if (sortBy === "price_asc") list.sort((a, b) => a.price - b.price);
+    if (sortBy === "price_desc") list.sort((a, b) => b.price - a.price);
+    if (sortBy === "rating") list.sort((a, b) => b.rating - a.rating);
+    if (sortBy === "popular") list.sort((a, b) => b.reviews - a.reviews);
     return list;
   }, [filters, sortBy]);
 
@@ -476,7 +477,7 @@ export default function BestSellerPage() {
             style={{ color: "#1a0a05", background: "none", border: "none", cursor: "pointer" }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="#8b1a1a" style={{ width: 18, height: 18 }}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h5.25"/>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h5.25" />
             </svg>
             Filters {(filters.categories.length + (filters.priceRange !== null ? 1 : 0) + (filters.minRating !== null ? 1 : 0) + (filters.minDiscount !== null ? 1 : 0)) > 0 && (
               <span className="px-1.5 py-0.5 rounded-full text-xs text-white" style={{ backgroundColor: "#8b1a1a" }}>
@@ -537,9 +538,11 @@ export default function BestSellerPage() {
 
             {/* Grid */}
             {visible.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
-                {visible.map(p => <ProductCard key={p.id} product={p} />)}
-              </div>
+              <Link to="/productdetails" onClick={()=>scrollTo(0,0)}>
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+                  {visible.map(p => <ProductCard key={p.id} product={p} />)}
+                </div>
+              </Link>
             ) : (
               <div className="flex flex-col items-center justify-center py-20 gap-4" style={{ color: "#b0a090" }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
