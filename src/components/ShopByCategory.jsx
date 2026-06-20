@@ -4,58 +4,58 @@ const allCategories = [
   {
     title: "EARRINGS",
     image:
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?q=80&w=1200",
+      "https://i.pinimg.com/736x/f2/b2/3c/f2b23cd81690a16e57a2359436f6933d.jpg",
     hoverImage:
-      "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=1200",
+      "https://i.pinimg.com/736x/66/14/f1/6614f19e08e4ef6f4927cbc79181490b.jpg",
   },
   {
     title: "FINGER RINGS",
     image:
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=1200",
+      "https://i.pinimg.com/1200x/6f/52/79/6f52796ccfba8936d13d651f8381f54d.jpg",
     hoverImage:
-      "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?q=80&w=1200",
+      "https://i.pinimg.com/736x/36/cb/9a/36cb9abf2b6d981e141cbe9559172f1a.jpg",
   },
   {
     title: "PENDANTS",
     image:
-      "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=1200",
+      "https://i.pinimg.com/1200x/47/0b/75/470b75e419b065314abaecdff093781a.jpg",
     hoverImage:
-      "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=1200",
+      "https://i.pinimg.com/736x/2f/37/6a/2f376ace423aaa9df3daee883dd15d24.jpg",
   },
   {
     title: "MANGALSUTRA",
     image:
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=1200",
+      "https://i.pinimg.com/1200x/bb/b3/15/bbb315c5fcfbece2a6bbfe55a3536e82.jpg",
     hoverImage:
-      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?q=80&w=1200",
+      "https://i.pinimg.com/1200x/21/a4/be/21a4be4812e702adae62612f769c607f.jpg",
   },
   {
     title: "NECKLACES",
     image:
-      "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=1200",
+      "https://i.pinimg.com/1200x/57/4a/f3/574af3c4805f676705abdafde514fc39.jpg",
     hoverImage:
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?q=80&w=1200",
+      "https://i.pinimg.com/1200x/22/98/ab/2298abd4e4f7a885956401e02d191166.jpg",
   },
   {
     title: "BRACELETS",
     image:
-      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?q=80&w=1200",
+      "https://i.pinimg.com/736x/60/1c/22/601c22b322148bad7855f41790261b76.jpg",
     hoverImage:
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=1200",
+      "https://i.pinimg.com/1200x/10/e7/d0/10e7d0e2ca2c4e4450b548583cc115a0.jpg",
   },
   {
     title: "ANKLETS",
     image:
-      "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?q=80&w=1200",
+      "https://i.pinimg.com/1200x/c6/a7/a2/c6a7a241774ce20a7e7b383034484f9f.jpg",
     hoverImage:
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=1200",
+      "https://i.pinimg.com/1200x/bf/1a/53/bf1a53fff8756542d6015f2bd4fefc04.jpg",
   },
   {
     title: "GOLD COINS",
     image:
-      "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=1200",
+      "https://i.pinimg.com/1200x/e0/fd/4f/e0fd4f5c3bc1629146e0b5c3a29f8810.jpg",
     hoverImage:
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?q=80&w=1200",
+      "https://i.pinimg.com/1200x/37/47/29/37472997c5952399b251e852a3fcb6b3.jpg",
   },
 ];
 

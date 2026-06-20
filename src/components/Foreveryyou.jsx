@@ -4,37 +4,37 @@ const slides = [
   {
     id: 1,
     label: "BRIDAL WEAR",
-    img: "https://images.pexels.com/photos/1616096/pexels-photo-1616096.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "https://i.pinimg.com/736x/4c/7f/b5/4c7fb5c8bb81949fea2df6e55fb86c11.jpg",
   },
   {
     id: 2,
     label: "OFFICE WEAR",
-    img: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "https://i.pinimg.com/736x/9c/58/32/9c5832aa30b4bd71ae31cad34d83b668.jpg",
   },
   {
     id: 3,
     label: "DAILY WEAR",
-    img: "https://images.pexels.com/photos/1302307/pexels-photo-1302307.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "https://i.pinimg.com/736x/ea/99/c0/ea99c06d5b0d63309b1713c536abafe5.jpg",
   },
   {
     id: 4,
     label: "PARTY WEAR",
-    img: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "https://i.pinimg.com/1200x/5e/bd/e2/5ebde2cdd67d430986536feb9d0ae687.jpg",
   },
   {
     id: 5,
     label: "FESTIVE WEAR",
-    img: "https://images.pexels.com/photos/1246960/pexels-photo-1246960.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "https://i.pinimg.com/736x/f3/04/84/f30484dfe6099fc3b0fd9e0e98d61c14.jpg",
   },
   {
     id: 6,
     label: "CASUAL WEAR",
-    img: "https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "https://i.pinimg.com/1200x/48/35/51/4835515f925ae25c30c2961cf1039dc7.jpg",
   },
   {
     id: 7,
     label: "EVENING WEAR",
-    img: "https://images.pexels.com/photos/10983783/pexels-photo-10983783.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img: "https://i.pinimg.com/1200x/25/ee/5a/25ee5a97ce773c165caf674a75b47d2d.jpg",
   },
 ];
 
